@@ -1,66 +1,48 @@
-package homework;
+package task;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
-public class qwer3 {
+public class abtask {
 
 	public static void main(String[] args) {
-//		 [응용문제8]
-//			 {"사과=2000","딸기=1500","키위=2500"}
+//	 [응용문제8]
 //
-//			 [출력순서]
-//				"해당 상품을 선택해 주세요? [1.사과, 2.딸기, 3.키위]" 2
-//				"해당 상품 갯수를 입력해 주세요? " 5
-//				"구매한 하신 총 가격은 7500원 입니다."
+//	 {"사과=2000","딸기=1500","키위=2500"}
 //
-//				* abstract 를 무조건 사용합니다.
-		
-		fruit2 ft=new fruit2();
-		ft.setter();
-		int total=ft.getter();
-			System.out.println("구매한 상품의 총 가격은"+total+"원 입니다");
-		
+//	 [출력순서]
+//	"해당 상품을 선택해 주세요? [1.사과, 2.딸기, 3.키위]" 2
+//	 "해당 상품 갯수를 입력해 주세요? " 5
+//	"구매한 하신 총 가격은 7500원 입니다."
+//
+//	* abstract 를 무조건 사용합니다.
+		result rs=new result();
+		rs.input();
+		rs.calcul();
 	}
 }
-abstract class fruit{
-	String array[];
-	int array2[];
-	ArrayList<String[]> arr=null;
-	public abstract void setter();
-	public abstract int getter();
-	public abstract void list();
+abstract class fruits{
+	int price[] = {2000,1500,2500};
+	int index;
+	int ea;
+	int total;
+	abstract void input();
+	abstract void calcul();
 }
-class fruit2 extends fruit{
-	int ea=0;
-	int total=0;
-	
+class result extends fruits{
 	@Override
-	public void setter() {
-		this.list();
-		
+	void input() {
 		Scanner sc=new Scanner(System.in);
-			System.out.println("해당 상품을 선택해주세요 1. 2. 3.");
-			int a=sc.nextInt();
-			System.out.println("해당 상품 개수를 입력해 주세요:");
-			int b=sc.nextInt();
-		int w=0;
-		while(w<ea) {
-			
-			this.total =b*this.array2[w]; 
-			w++;
-		}
+			System.out.println("해당 상품을 선택해 주세요");
+		int index=sc.nextInt();
+			System.out.println("해당 상품의 개수를 선택해 주세요");
+		int ea =sc.nextInt();
+		this.index=index;
+		this.ea=ea;
+		sc.close();
 	}
 	@Override
-	public int getter() {
-		return this.total;
-	}
-	@Override
-	public void list() {
-		this.array=new String[] {"사과","딸기","키위"};
-		this.array2=new int[]{2000,1500,2500};
-		
-		this.ea=this.array.length;
-		this.ea=this.array2.length;
+	void calcul() {
+		this.total=this.price[this.index-1]*this.ea;
+			System.out.println("구매하신 총 가격은"+this.total+"입니다");
 	}
 }
