@@ -17,7 +17,7 @@ public class abtask {
 //	* abstract 를 무조건 사용합니다.
 		result rs=new result();
 		rs.input();
-		rs.calcul();
+		rs.output();
 	}
 }
 abstract class fruits{
@@ -26,7 +26,7 @@ abstract class fruits{
 	int ea;
 	int total;
 	abstract void input();
-	abstract void calcul();
+	abstract void output();
 }
 class result extends fruits{
 	@Override
@@ -41,7 +41,7 @@ class result extends fruits{
 		sc.close();
 	}
 	@Override
-	void calcul() {
+	void output() {
 		this.total=this.price[this.index-1]*this.ea;
 			System.out.println("구매하신 총 가격은"+this.total+"입니다");
 	}
